@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA10C9E5223FC687009DD683 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA10C9E4223FC687009DD683 /* CreateAccountVC.swift */; };
 		AA35B522223F115F00FE489D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35B521223F115F00FE489D /* Constants.swift */; };
 		AA35B524223F192800FE489D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA35B523223F192800FE489D /* LoginVC.swift */; };
 		AA406995223D4F5600B5B889 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA406994223D4F5600B5B889 /* ChatVC.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		4AC7C7CF415FEB5A620115EF /* Pods_Smack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA10C9E4223FC687009DD683 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		AA35B521223F115F00FE489D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AA35B523223F192800FE489D /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		AA406994223D4F5600B5B889 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				AA406994223D4F5600B5B889 /* ChatVC.swift */,
 				AA406996223D4F6A00B5B889 /* ChannelVC.swift */,
 				AA35B523223F192800FE489D /* LoginVC.swift */,
+				AA10C9E4223FC687009DD683 /* CreateAccountVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			files = (
 				AA406997223D4F6A00B5B889 /* ChannelVC.swift in Sources */,
 				AA406995223D4F5600B5B889 /* ChatVC.swift in Sources */,
+				AA10C9E5223FC687009DD683 /* CreateAccountVC.swift in Sources */,
 				AA35B524223F192800FE489D /* LoginVC.swift in Sources */,
 				AA406999223D9B7D00B5B889 /* GradientView.swift in Sources */,
 				AA84D4B1223C320500333ACD /* AppDelegate.swift in Sources */,
