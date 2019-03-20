@@ -4,6 +4,11 @@
 //  Created by Steve Zeller on 3/17/19.
 //  Copyright © 2019 Capital. All rights reserved.
 
+// Users ...
+// Zman - zman@zmail.com - zman987
+// Babs - babs@zmail.com - barby69
+// Stuart - stu@zmail.com - stuey44
+// Shaniqua - sha@zmail.com - donka00
 
 import Foundation
 
