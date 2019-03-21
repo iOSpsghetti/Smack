@@ -4,6 +4,13 @@
 //  Created by Steve Zeller on 3/18/19.
 //  Copyright © 2019 Capital. All rights reserved.
 
+// Users ...
+// Zman - zman@zmail.com - zman987
+// Babs - babs@zmail.com - barby69
+// Stuart - stu@zmail.com - stuey44
+// Shaniqua - sha@zmail.com - donka00
+
+
 import UIKit
 
 class CreateAccountVC: UIViewController {
@@ -29,9 +36,15 @@ class CreateAccountVC: UIViewController {
         guard let pass = passTxt.text, passTxt.text != nil else {return}
         
         AuthService.instance.registerUser(email: email, password: pass) { (success) in
-            //
+            // Sent request ... waiting
             if success {
-                print("registered user!")
+                //print("registered user!")
+                AuthService.instance.loginUser(email: email, password: pass, completion: { (success) in
+                    print("Logged In User !!!", AuthService.instance.authToken)
+                    
+                    
+                })
+                
             }
         }
         
