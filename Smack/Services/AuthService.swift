@@ -88,10 +88,10 @@ class AuthService {
     
     func loginUser(email: String, password: String, completion: @escaping CompletionHandler) {
         
-        let lowercaseEmail = email.lowercased()
+        let lowerCaseEmail = email.lowercased()
         
         let body: [String: Any] = [
-            "email": lowercaseEmail,
+            "email": lowerCaseEmail,
             "password": password
         ]
         
@@ -114,7 +114,7 @@ class AuthService {
                 */
                 
                 
-                // Using SwiftyJSON ...
+                // Using SwiftyJSON (easier) ...
                 // 1. Get Data ...
                 guard let data = response.data else {return}
                 // 2. Create SwiftyJSON Object ...
@@ -122,7 +122,6 @@ class AuthService {
                 // SwiftyJSON SAFELY unwraps "email" and "token" values for you
                 self.userEmail = json["email"].stringValue
                 self.authToken = json["token"].stringValue
-                
                 
                 
                 // Dude says we ARE logged in (I suppose this should be true ???)
@@ -137,14 +136,56 @@ class AuthService {
                 completion(false)
                 debugPrint(response.result.error as Any)
             }
-            
         }
-        
-        
-        
     }
     
     
+    func createUser(name: String, email: String, avatarName: String, avatarColor: String, completion: @escaping CompletionHandler) {
+        
+        let lowerCaseEmail = email.lowercased()
+        
+        let body: [String: Any] = [
+            "name": name,
+            "email": lowerCaseEmail,
+            "avatarName": avatarName,
+            "avatarColor": avatarColor
+        ]
+        
+        let header = [
+            "Authorization":"Bearer \(AuthService.instance.authToken)",
+            "Content-Type:": "application/json; charset=utf-8"
+        ]
+        
+        
+        Alamofire.request(URL_USER_ADD, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            
+            // Test for error in result from server
+            if response.result.error == nil {
+                // Create data constant from result
+                guard let data = response.data else {return}
+                
+                let json = JSON(data: data)
+                let _id = json["_id"].stringValue
+                let _name = json["name"].stringValue
+                let _email = json["email"].stringValue
+                let _avatarName = json["avatarName"].stringValue
+                let _avatarColor = json["avatarColor"].stringValue
+            
+                
+                // Update our Custom UserDataService
+                UserDataService.instance.setUserData(id: _id, name: _name, email: _email, avatarName: _avatarName, avatarColor: _avatarColor)
+                
+                completion(true)
+                
+            } else {
+                // ERROR FOUND ...
+                completion(false)
+                debugPrint(response.result.error as Any)
+            }
+            
+        }
+        
+    }
     
     
     

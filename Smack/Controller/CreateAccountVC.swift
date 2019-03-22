@@ -21,33 +21,46 @@ class CreateAccountVC: UIViewController {
     @IBOutlet weak var passTxt: UITextField!
     @IBOutlet weak var userImg: UIImageView!
     
+    // Variables ...
+    // This will be the User's Avatar (defaults to profileDefault image)
+    var avatarName = "profileDefault"
+    // RGB Color for gray
+    var avatarColor = "[0.5, 0.5, 0.5, 1]"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
     }
 
     @IBAction func createAccntPressed(_ sender: Any) {
         // guard statments let you safely unwrap optional values
         // BECAUSE the .text property of a UITextField is OPTIONAL it MUST be unwrapped
+        guard let name = usernameTxt.text, usernameTxt.text != nil else {return}
         guard let email = emailTxt.text, emailTxt.text != nil else {return}
         guard let pass = passTxt.text, passTxt.text != nil else {return}
+        
         
         AuthService.instance.registerUser(email: email, password: pass) { (success) in
             // Sent request ... waiting
             if success {
                 //print("registered user!")
                 AuthService.instance.loginUser(email: email, password: pass, completion: { (success) in
-                    print("Logged In User !!!", AuthService.instance.authToken)
+                    //print("Logged In User !!!", AuthService.instance.authToken)
                     
-                    
+                    AuthService.instance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
+
+                        // Print some shit ...
+                        print(UserDataService.instance.name, UserDataService.instance.avatarName)
+                        
+                        if success {
+                            self.performSegue(withIdentifier: SEGUE_UNWIND_TO_CHANNEL, sender: nil)
+                        }
+                        
+                    })
                 })
-                
             }
         }
-        
     }
     
     @IBAction func pickAvatarPressed(_ sender: Any) {
